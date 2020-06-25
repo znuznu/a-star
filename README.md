@@ -18,7 +18,7 @@ The __status__ are:
 - _Block_: at least one of the given coordinates is a block
 - _None_: no path have been found
 
-__Note:__ the heuristic used is the Manhattan Distance.
+__Note:__ the heuristic used is the Manhattan distance.
 
 ### A quick example
 ```javascript
