@@ -159,6 +159,11 @@ export default class AStar {
           cursor = parents.get(cursor);
         }
 
+        path.push({
+          r: cursor.r,
+          c: cursor.c
+        });
+
         return {
           status: 'Found',
           path: path.reverse()
