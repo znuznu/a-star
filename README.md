@@ -7,9 +7,9 @@ A config `Object` must be passed to the `AStar`.
 
 This config must be composed of two parameters: a 2D Array `datas` of any type (primitives or custom `Class`) and a function `block` in order to test if the cells from the grid is a block.
 
-After the `AStar` initialization, you can use the `search` function multiple times as long as you give two coordinates objects.
+After the `AStar` initialization, you can use the `search` function multiple times as long as you give two coordinate objects.
 
-The research complete, an object composed of the `status` is returned.  
+When the research is done, an object composed of the `status` is returned.  
 If a `path` was found, an array of object coordinates (from start to end) is added too.  
 
 The __status__ are:  
