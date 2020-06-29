@@ -1,4 +1,5 @@
-export default class Node {  /**
+export default class Node {
+  /**
    * Represent a Node of the grid (based on the original
    * user grid) used by the A-Star.
    *

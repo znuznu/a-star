@@ -1,5 +1,5 @@
 import Node from './Node.js';
-import BinaryHeap from './BinaryHeap.js';
+import BinaryHeap from './struct/BinaryHeap.js';
 
 export default class AStar {
   /**
