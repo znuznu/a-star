@@ -13,7 +13,7 @@ When the research is done, an object composed of the `status` is returned.
 If a `path` was found, an array of object coordinates (from start to end) is added too.  
 
 The __status__ are:  
-- _Found_: a path have been found and retrieved
+- _Found_: a path has been found and retrieved
 - _Invalid_: at least one of the given coordinates is wrong (out of bounds)
 - _Block_: at least one of the given coordinates is a block
 - _None_: no path have been found
