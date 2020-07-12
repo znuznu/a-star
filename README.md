@@ -1,11 +1,11 @@
 # a-star
-Four directions A* algorithm written in JavaScript for 2D Array.  
+Four or height directions A* algorithm written in JavaScript for 2D Array.  
 
 ## Usage
 
 A config `Object` must be passed to the `AStar`.  
 
-This config must be composed of two parameters: a 2D Array `datas` of any type (primitives or custom `Class`) and a function `block` in order to test if the cells from the grid is a block.
+This config must be composed of (at least) 2 parameters: a 2D Array `datas` of any type (primitives or custom `Class`), a function `block` in order to test if a square of the grid is a block and a topology, 4 or 8 (default is 4).  
 
 After the `AStar` initialization, you can use the `search` function multiple times as long as you give two coordinate objects.
 
@@ -18,7 +18,7 @@ The __status__ are:
 - _Block_: at least one of the given coordinates is a block
 - _None_: no path have been found
 
-__Note:__ the heuristic used is the Manhattan distance.
+__Note:__ the heuristic used is the Manhattan distance or the octile distance.  
 
 ### A quick example
 ```javascript
@@ -35,7 +35,8 @@ let grid = [
 // The testing block function is simple.
 let config = {
   datas: grid,
-  block: n => n === 1
+  block: n => n === 1,
+  topology: 4
 };
 
 let aStar = new AStar(config);
