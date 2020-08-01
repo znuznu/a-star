@@ -7,8 +7,8 @@ export default class MinBinaryHeap {
    * @param {function} scoreFunction - The function used to insert data
    */
   constructor(scoreFunction) {
-    this.datas = [];
-    this.datasSet = new Set([]);
+    this.data = [];
+    this.dataSet = new Set([]);
     this.scoreFunction = scoreFunction;
   }
 
@@ -16,7 +16,7 @@ export default class MinBinaryHeap {
    * Return the size of this BinaryHeap.
    */
   size() {
-    return this.datas.length;
+    return this.data.length;
   }
 
   /**
@@ -25,25 +25,25 @@ export default class MinBinaryHeap {
    * @param {*} element - The element to insert
    */
   push(element) {
-    this.datas.push(element);
-    this.ascend(this.datas.length - 1);
-    this.datasSet.add(element);
+    this.data.push(element);
+    this.ascend(this.data.length - 1);
+    this.dataSet.add(element);
   }
 
   /**
    * Remove and return the smallest element of this BinaryHeap that is updated.
    */
   pop() {
-    var result = this.datas[0];
+    var result = this.data[0];
 
-    var end = this.datas.pop();
+    var end = this.data.pop();
 
-    if (this.datas.length > 0) {
-      this.datas[0] = end;
+    if (this.data.length > 0) {
+      this.data[0] = end;
       this.descend(0);
     }
 
-    this.datasSet.delete(result);
+    this.dataSet.delete(result);
 
     return result;
   }
@@ -54,21 +54,21 @@ export default class MinBinaryHeap {
    *
    */
   remove(node) {
-    if (this.datasSet.has(node))
-      this.datasSet.delete(node);
+    if (this.dataSet.has(node))
+      this.dataSet.delete(node);
 
-    var length = this.datas.length;
+    var length = this.data.length;
 
     for (var i = 0; i < length; i++) {
-      if (this.datas[i] != node)
+      if (this.data[i] != node)
         continue;
 
-      var end = this.datas.pop();
+      var end = this.data.pop();
 
       if (i == length - 1)
         break;
 
-      this.datas[i] = end;
+      this.data[i] = end;
       this.ascend(i);
       this.descend(i);
 
@@ -82,18 +82,18 @@ export default class MinBinaryHeap {
    * @param{int} n - The nth element
    */
   ascend(n) {
-    var element = this.datas[n];
+    var element = this.data[n];
     var score = this.scoreFunction(element);
 
     while (n > 0) {
       var parentN = ~~((n + 1) / 2) - 1,
-      parent = this.datas[parentN];
+      parent = this.data[parentN];
 
       if (score >= this.scoreFunction(parent))
         break;
 
-      this.datas[parentN] = element;
-      this.datas[n] = parent;
+      this.data[parentN] = element;
+      this.data[n] = parent;
       n = parentN;
     }
   }
@@ -104,8 +104,8 @@ export default class MinBinaryHeap {
    * @param{int} n - The nth element
    */
   descend(n) {
-   var length = this.datas.length,
-   element = this.datas[n],
+   var length = this.data.length,
+   element = this.data[n],
    elemScore = this.scoreFunction(element);
 
    while(true) {
@@ -113,14 +113,14 @@ export default class MinBinaryHeap {
      let swap = null;
 
      if (c1 < length) {
-       let child1 = this.datas[c1];
+       let child1 = this.data[c1];
        var child1Score = this.scoreFunction(child1);
        if (child1Score < elemScore)
          swap = c1;
      }
 
      if (c2 < length) {
-       let child2 = this.datas[c2];
+       let child2 = this.data[c2];
        let child2Score = this.scoreFunction(child2);
        if (child2Score < (swap == null ? elemScore : child1Score))
          swap = c2;
@@ -129,8 +129,8 @@ export default class MinBinaryHeap {
      if (swap == null)
       break;
 
-     this.datas[n] = this.datas[swap];
-     this.datas[swap] = element;
+     this.data[n] = this.data[swap];
+     this.data[swap] = element;
      n = swap;
    }
   }
@@ -142,6 +142,6 @@ export default class MinBinaryHeap {
    * @returns True if the node exists in the Heap
    */
   contains(node) {
-      return this.datasSet.has(node);
+      return this.dataSet.has(node);
   }
 }

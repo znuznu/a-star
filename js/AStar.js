@@ -18,13 +18,13 @@ export default class AStar {
    *
    * @constructor
    * @param {Object} config - Configuration object of the algorithm
-   * @param {Array} config.datas - A 2D-array of (non-)objects
+   * @param {Array} config.data - A 2D-array of (non-)objects
    * @param {function} config.block - True if this object is a block
    * @param {number} config.topology - The topology, either 4 or 8
    */
   constructor(config) {
     this.block = config.block;
-    this.grid = this.initGrid(config.datas);
+    this.grid = this.initGrid(config.data);
     this.topology = config.topology || 4;
   }
 
@@ -33,17 +33,17 @@ export default class AStar {
    * Unblocked elements becomes Node and blocked elements becomes
    * undefined in this grid.
    *
-   * @param {array} datas - A 2D-Array
+   * @param {array} data - A 2D-Array
    */
-  initGrid(datas) {
+  initGrid(data) {
     let grid = [];
 
-    for (let row = 0; row < datas.length; row++) {
+    for (let row = 0; row < data.length; row++) {
       if (!grid[row])
         grid[row] = [];
 
-      for (let col = 0; col < datas[0].length; col++) {
-        let data = datas[row][col];
+      for (let col = 0; col < data[0].length; col++) {
+        let data = data[row][col];
 
         if (!this.block(data)) {
           grid[row].push(new Node(row, col, data));
@@ -150,7 +150,7 @@ export default class AStar {
 
     open.push(startNode);
 
-    while (open.datas.length) {
+    while (open.data.length) {
       let current = open.pop();
 
       // We have found the target.

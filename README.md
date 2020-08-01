@@ -49,7 +49,7 @@ let result = aStar.search(start, end);
 
 //  {
 //    status: 'Found',
-//    path: (8) [...]
+//    path: (9) [...]
 //  }
 console.dir(result);
 
